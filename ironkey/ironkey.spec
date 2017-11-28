@@ -14,7 +14,7 @@ Name:       %{name}
 Version:    %{version}
 Release:    %{release}
 Group:      Development/Tools
-Requires:   glibc.i686 libgcc_s.so.1
+Requires:   glibc(x86-32) libgcc_s.so.1
 
  
 %description
