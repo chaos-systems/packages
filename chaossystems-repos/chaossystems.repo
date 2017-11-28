@@ -1,0 +1,13 @@
+[chaossystems-repo]
+name=Chaos Systems RPM Repository - $basearch
+baseurl=https://s3-eu-west-1.amazonaws.com/chaossystems-repositories/artifacts/rpm/chaossystems/$basearch/
+enabled=1
+gpgkey =
+gpgcheck=0
+
+[chaossystems-repo-noarch]
+name=Chaos Systems RPM Repository - noarch
+baseurl=https://s3-eu-west-1.amazonaws.com/chaossystems-repositories/artifacts/rpm/chaossystems/noarch/
+enabled=1
+gpgkey =
+gpgcheck=0

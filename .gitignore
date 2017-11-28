@@ -1,0 +1,8 @@
+*.swp
+.idea
+
+.aws
+docker-compose.override.yml
+
+rpmbuild/
+repo/

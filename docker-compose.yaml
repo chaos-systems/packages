@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  # usage: docker-compose run rpm
+  rpm:
+    build: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - ~/.ssh:/root/.ssh:rw
+      - ~/.aws:/root/.aws:ro
+      - .:/rpm-build:rw
