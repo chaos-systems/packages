@@ -1,7 +1,7 @@
 # Chaos Systems development tools setup.
  
 %define name    chaossystems-devtools
-%define version   1.1
+%define version   1.2
 %define release   1
 
 %define buildroot %{_topdir}/%{name}-%{version}-root
@@ -15,7 +15,7 @@ Version:    %{version}
 Release:    %{release}
 Group:      Development/Tools
 Requires:   adobe-source-code-pro-fonts curl fish fzf go hostname make sudo the_silver_searcher tmux tmux-powerline
-Requires:   traceroute vim vim-powerline
+Requires:   traceroute util-linux-user vim vim-powerline
 Requires:   wget git java-9-openjdk-devel nodejs python python-pip ruby sbt scala
 
  
@@ -39,5 +39,8 @@ rm -rf $RPM_BUILD_ROOT
 sbt update
 
 %changelog
+* Mon Jan 22 2018 1.2
+- Add linux user utils.
+
 * Mon Nov 20 2017 1.0
 - First release.
