@@ -40,7 +40,7 @@ git clone git://github.com/tobi-wan-kenobi/bumblebee-status /opt/bumblebee-statu
 ln -s /opt/bumblebee-status/bumblebee-status /usr/local/bin/bumblebee-status
 
 %changelog
-* Thur Dec 14
+* Thu Dec 14 2017 1.4
 - Correct the rxvt version, -ml is needed for font support.
 - Add powerline.
 

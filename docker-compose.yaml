@@ -8,6 +8,4 @@ services:
     stdin_open: true
     working_dir: /rpm-build
     volumes:
-      - ~/.ssh:/root/.ssh:rw
-      - ~/.aws:/root/.aws:ro
       - .:/rpm-build:rw
