@@ -58,6 +58,6 @@ download-slack:
 	rm -f slack-3.0.5-0.1.fc21.x86_64.rpm
 
 download-atom:
-	curl -LsO https://github.com/atom/atom/releases/download/v1.23.3/atom.x86_64.rpm 
+	curl -LsO https://github.com/atom/atom/releases/download/v1.24.0/atom.x86_64.rpm
 	cp atom.x86_64.rpm repo/noarch/
 	rm -f atom.x86_64.rpm
