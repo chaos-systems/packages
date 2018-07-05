@@ -2,7 +2,7 @@
 .idea
 
 .aws
-docker-compose.override.yaml
+rpm/docker-compose.override.yaml
 
 rpmbuild/
 repo/

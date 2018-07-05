@@ -1,0 +1,19 @@
+Format: 1.8
+Date: Thu, 5 Jul 2018 16:50:05 +0200
+Source: chaossystems-repos
+Binary: chaossystems-repos
+Architecture: all
+Version: 1.1.0-1
+Urgency: low
+Maintainer: gorzell
+Changed-By: gorzell
+Description:
+ chaossystems-repos - chaossystems-repos
+Changes:
+ chaossystems-repos (1.1.0-1) ; urgency=low
+Checksums-Sha1:
+ 874e52915ed13e08f140e3f8dc32154631b49300 912 chaossystems-repos_1.1.0-1_all.deb
+Checksums-Sha256:
+ 5dc2b83f9c4b8f60dc2563d14280950a697c441cb9e29dc342d8794610e4cb00 912 chaossystems-repos_1.1.0-1_all.deb
+Files:
+ 7d4f87f94a4029476bc86fd4dc6220a4 912 java optional chaossystems-repos_1.1.0-1_all.deb

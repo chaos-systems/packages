@@ -1,18 +1,4 @@
-# Chaos Systems RPM Repository
-
-## Building with the docker image
-### docker-compose.override.yml
-There are some things that need to be overridden to match your individual environment, your overrides file should not be checked into git.
-
-```
-version: "3.3"
-
-# You need to set the profile that you use for accessing the aws account.
-services:
-  rpm:
-    environment:
-      - AWS_DEFAULT_PROFILE: [profile]
-```
+# Chaos Systems Packages
 
 ## Bootstrapping an OS
 
@@ -22,5 +8,13 @@ services:
 ### DNF
 `dnf install -y https://s3-eu-west-1.amazonaws.com/chaossystems-repositories/artifacts/rpm/chaossystems/noarch/chaossystems-repos-1.0-1.noarch.rpm`
 
+### Apt/Deb
+`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61`
+`echo "deb https://dl.bintray.com/chaos-systems/deb bionic main" | tee -a /etc/apt/sources.list`
+
 ## Reference
-Most of this was taken from the examples in [this blog post](http://blog.celingest.com/en/2014/09/17/create-your-own-yum-rpm-repository-using-amazon-s3/)
+https://github.com/nebula-plugins/gradle-ospackage-plugin
+https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Deb-Plugin
+https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/RPM-Plugin
+
+https://github.com/bintray/gradle-bintray-plugin

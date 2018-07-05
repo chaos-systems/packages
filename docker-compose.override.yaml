@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  # usage: docker-compose run rpm
+  rpm:
+    build: ..
+    tty: true
+    stdin_open: true
+    command: fish
+    environment:
+      - AWS_DEFAULT_PROFILE=chaossystems
+    volumes:
+      - ~/.ssh:/root/.ssh:rw
+      - ~/encrypted/chaossystems/aws/gorzell.ini:/root/.aws/credentials:rw
+      - ~/.config/fish/config.fish:/root/.config/fish/config.fish:ro
+      - ~/.config/fish/functions:/root/.config/fish/functions:ro

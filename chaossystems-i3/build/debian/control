@@ -1,0 +1,13 @@
+Source: chaossystems-i3
+Section: java
+Priority: optional
+Maintainer: gorzell
+Uploaders: 
+Version: 1.5.0-1
+Standards-Version: 3.8.3
+Package: chaossystems-i3
+Homepage: 
+Architecture: all
+Distribution: 
+Depends: fonts-font-awesome, fonts-powerline, python-dev, rxvt-unicode, arc-theme, arandr, conky, dmenu, feh, i3, i3lock, i3status, lxappearance, powerline, xbacklight
+Description: chaossystems-i3

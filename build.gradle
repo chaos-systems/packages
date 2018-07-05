@@ -1,0 +1,46 @@
+plugins {
+    id "nebula.ospackage" version "4.9.3"
+    id "com.jfrog.bintray" version "1.8.3"
+}
+
+subprojects {
+    apply plugin: 'nebula.ospackage'
+    apply plugin: 'com.jfrog.bintray'
+
+    bintray {
+        user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+        key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+        publish = true
+        override = true
+
+        pkg {
+            userOrg = 'chaos-systems'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'https://github.com/chaos-systems/rpm-repo'
+            repo = 'deb'
+
+            filesSpec {
+                from ('build/distributions') {
+                    include '**/*.deb'
+                }
+                into '.'
+            }
+
+            debian {
+                distribution = 'bionic'
+                component = 'main'
+                architecture = 'i386,noarch,amd64'
+            }
+
+            version {
+                gpg {
+                    sign = true
+                }
+            }
+        }
+    }
+
+    build.dependsOn buildDeb
+    build.dependsOn buildRpm
+}

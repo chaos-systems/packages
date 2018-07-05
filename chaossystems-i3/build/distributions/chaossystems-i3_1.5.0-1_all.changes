@@ -1,0 +1,19 @@
+Format: 1.8
+Date: Thu, 5 Jul 2018 16:50:05 +0200
+Source: chaossystems-i3
+Binary: chaossystems-i3
+Architecture: all
+Version: 1.5.0-1
+Urgency: low
+Maintainer: gorzell
+Changed-By: gorzell
+Description:
+ chaossystems-i3 - chaossystems-i3
+Changes:
+ chaossystems-i3 (1.5.0-1) ; urgency=low
+Checksums-Sha1:
+ 9aabb763a35796254ff26af091404d19fb420652 612 chaossystems-i3_1.5.0-1_all.deb
+Checksums-Sha256:
+ a86924046f0d320ec344324276f7acf0ea2fdd1f1209c3809ed0152c14fe5e5c 612 chaossystems-i3_1.5.0-1_all.deb
+Files:
+ 4cf002e87e71c3edd6bc89e03cb8a221 612 java optional chaossystems-i3_1.5.0-1_all.deb

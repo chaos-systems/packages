@@ -1,0 +1,13 @@
+Source: ironkey
+Section: java
+Priority: optional
+Maintainer: gorzell
+Uploaders: 
+Version: 2.1.0-1
+Standards-Version: 3.8.3
+Package: ironkey
+Homepage: 
+Architecture: i386
+Distribution: 
+Depends: ia32-libs, lib32gcc1
+Description: ironkey
