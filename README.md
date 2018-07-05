@@ -9,8 +9,10 @@
 `dnf install -y https://s3-eu-west-1.amazonaws.com/chaossystems-repositories/artifacts/rpm/chaossystems/noarch/chaossystems-repos-1.0-1.noarch.rpm`
 
 ### Apt/Deb
-`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61`
-`echo "deb https://dl.bintray.com/chaos-systems/deb bionic main" | tee -a /etc/apt/sources.list`
+```
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61`
+echo "deb https://dl.bintray.com/chaos-systems/deb bionic main" | sudo tee -a /etc/apt/sources.list
+```
 
 ## Reference
 https://github.com/nebula-plugins/gradle-ospackage-plugin
