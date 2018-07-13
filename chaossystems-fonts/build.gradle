@@ -1,0 +1,49 @@
+ospackage {
+    packageName = 'chaossystems-fonts'
+    version = '1.0.0'
+    release = '1'
+    os = LINUX
+}
+
+task downloadFonts(type: Download) {
+    src([
+            'https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf',
+            'https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf'
+    ])
+    dest buildDir
+    overwrite false
+}
+
+buildRpm {
+    requires('fontawesome-fonts')
+    requires('powerline-fonts')
+
+    from(buildDir) {
+        into '/usr/share/fonts/local'
+        include "*.otf"
+    }
+}
+
+buildDeb {
+    requires('fonts-font-awesome')
+    requires('fonts-powerline')
+
+    from(buildDir) {
+        into '/usr/share/fonts/opentypes'
+        include "*.otf"
+    }
+}
+
+buildRpm.dependsOn downloadFonts
+buildDeb.dependsOn downloadFonts
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}

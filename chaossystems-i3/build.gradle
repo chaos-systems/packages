@@ -1,8 +1,11 @@
 ospackage {
     packageName = 'chaossystems-i3'
-    version = '1.5.0'
+    version = '1.5.2'
     release = '1'
     os = LINUX
+
+    requires('chaossystems-repos')
+    requires('chaossystems-fonts')
 
     requires('arc-theme')
     requires('arandr')
@@ -15,19 +18,18 @@ ospackage {
     requires('lxappearance')
     requires('powerline')
     requires('xbacklight')
+
+    postInstall file('scripts/post-install.sh')
+    preUninstall file('scripts/pre-uninstall.sh')
 }
 
 buildRpm {
-    requires('fontawesome-fonts')
-    requires('powerline-fonts')
     requires('python-devel')
     requires('redhat-rpm-config')
     requires('rxvt-unicode-256color-ml')
 }
 
 buildDeb {
-    requires('fonts-font-awesome')
-    requires('fonts-powerline')
     requires('python-dev')
     requires('rxvt-unicode')
 }

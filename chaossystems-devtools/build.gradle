@@ -4,6 +4,8 @@ ospackage {
     release = '1'
     os = LINUX
 
+    requires('chaossystems-repos')
+
     requires('curl')
     requires('fish')
     requires('hostname')
