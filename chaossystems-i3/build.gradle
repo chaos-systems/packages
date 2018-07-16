@@ -1,10 +1,9 @@
 ospackage {
     packageName = 'chaossystems-i3'
     version = '1.5.2'
-    release = '1'
+    release = '2'
     os = LINUX
 
-    requires('chaossystems-repos')
     requires('chaossystems-fonts')
 
     requires('arc-theme')

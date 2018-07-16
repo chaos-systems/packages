@@ -1,10 +1,8 @@
 ospackage {
     packageName = 'chaossystems-devtools'
     version = '1.4.0'
-    release = '1'
+    release = '2'
     os = LINUX
-
-    requires('chaossystems-repos')
 
     requires('ammonite')
     requires('curl')
