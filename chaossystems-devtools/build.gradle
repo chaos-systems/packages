@@ -1,12 +1,14 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '1.3.0'
+    version = '1.4.0'
     release = '1'
     os = LINUX
 
     requires('chaossystems-repos')
 
+    requires('ammonite')
     requires('curl')
+    requires('docker-ce')
     requires('fish')
     requires('hostname')
     requires('make')
@@ -17,6 +19,7 @@ ospackage {
     requires('wget')
     requires('git')
     requires('sbt')
+    requires('scala')
 }
 
 buildRpm {
@@ -44,7 +47,6 @@ buildDeb {
     requires('python-pip')
     requires('ruby')
     requires('rbenv')
-    requires('scala')
 }
 
 bintray {

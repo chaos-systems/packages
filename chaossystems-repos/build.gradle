@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'chaossystems-repos'
     version = '1.1.1'
-    release = '1'
+    release = '2'
     os = LINUX
 
     requires('curl')
