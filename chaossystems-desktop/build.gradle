@@ -1,11 +1,12 @@
 ospackage {
     packageName = 'chaossystems-desktop'
-    version = '1.0.0'
+    version = '1.1.0'
     release = '1'
     os = LINUX
 
     requires('atom')
     requires('chromium-browser')
+    requires('code')
     requires('firefox')
     requires('slack')
 }

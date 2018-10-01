@@ -1,9 +1,7 @@
 include 'ammonite',
-        'atom',
         'chaossystems-desktop',
         'chaossystems-devtools',
         'chaossystems-fonts',
         'chaossystems-i3',
         'chaossystems-repos',
-        'ironkey',
-        'slack'
+        'ironkey'

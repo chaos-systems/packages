@@ -1,8 +1,7 @@
-
 ospackage {
     packageName = 'ironkey'
-    version = '2.2.0'
-    release = '1'
+    version = '2.3.0'
+    release = '2'
     os = LINUX
 
     requires('bindfs')
