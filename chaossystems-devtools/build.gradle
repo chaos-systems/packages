@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '1.5.0'
+    version = '2.0.0'
     release = '1'
     os = LINUX
 
@@ -8,16 +8,15 @@ ospackage {
     requires('curl')
     requires('docker-ce')
     requires('fish')
+    requires('git')
     requires('hostname')
-    requires('make')
+    requires('sbt')
+    requires('scala')
     requires('sudo')
     requires('tmux')
     requires('traceroute')
     requires('vim')
     requires('wget')
-    requires('git')
-    requires('sbt')
-    requires('scala')
 }
 
 buildRpm {
@@ -37,14 +36,16 @@ buildRpm {
 }
 
 buildDeb {
+    requires('build-essential')
     requires('golang')
-    requires('silversearcher-ag')
-    requires('openjdk-11-jdk')
+    requires('gradle')
     requires('nodejs')
+    requires('openjdk-11-jdk')
     requires('python')
     requires('python-pip')
     requires('ruby')
     requires('rbenv')
+    requires('silversearcher-ag')
     requires('zulu-10')
 }
 

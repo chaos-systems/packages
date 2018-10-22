@@ -30,7 +30,7 @@ subprojects {
             }
 
             debian {
-                distribution = 'bionic'
+                distribution = 'cosmic'
                 component = 'main'
                 architecture = 'i386,noarch,amd64'
             }

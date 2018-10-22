@@ -38,6 +38,10 @@ apt-add-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode
 curl -sL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
 apt-add-repository "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
 
+# Nodejs
+curl -sL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+apt-add-repository "deb https://deb.nodesource.com/node_10.x $(lsb_release -cs) main"
+
 # i3
 /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
 #dpkg -i ./keyring.deb
