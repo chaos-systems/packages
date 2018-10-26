@@ -4,5 +4,6 @@
 .aws
 docker-compose.override.yaml
 
+build/
 rpmbuild/
 repo/

@@ -2,8 +2,30 @@ version: "3.3"
 
 services:
   # usage: docker-compose run rpm
-  rpm:
-    build: .
+  rpm-build:
+    build:
+      context: .
+      dockerfile: Dockerfile.rpm
+    tty: true
+    stdin_open: true
+    working_dir: /rpm-build
+    volumes:
+      - .:/rpm-build:rw
+
+  rpm-test:
+    image: fedora:28
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+    working_dir: /rpm-build
+    volumes:
+      - .:/rpm-build:rw
+
+  ubuntu-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+    command: /bin/bash
     tty: true
     stdin_open: true
     working_dir: /rpm-build

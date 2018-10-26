@@ -1,0 +1,45 @@
+ospackage {
+    packageName = 'chaossystems-i3'
+    version = '1.5.2'
+    release = '2'
+    os = LINUX
+
+    requires('chaossystems-fonts')
+
+    requires('arc-theme')
+    requires('arandr')
+    requires('conky')
+    requires('dmenu')
+    requires('feh')
+    requires('i3')
+    requires('i3lock')
+    requires('i3status')
+    requires('lxappearance')
+    requires('powerline')
+    requires('xbacklight')
+
+    postInstall file('scripts/post-install.sh')
+    preUninstall file('scripts/pre-uninstall.sh')
+}
+
+buildRpm {
+    requires('python-devel')
+    requires('redhat-rpm-config')
+    requires('rxvt-unicode-256color-ml')
+}
+
+buildDeb {
+    requires('python-dev')
+    requires('rxvt-unicode')
+}
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}

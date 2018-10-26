@@ -1,0 +1,60 @@
+ospackage {
+    packageName = 'chaossystems-devtools'
+    version = '1.5.0'
+    release = '1'
+    os = LINUX
+
+    requires('ammonite')
+    requires('curl')
+    requires('docker-ce')
+    requires('fish')
+    requires('hostname')
+    requires('make')
+    requires('sudo')
+    requires('tmux')
+    requires('traceroute')
+    requires('vim')
+    requires('wget')
+    requires('git')
+    requires('sbt')
+    requires('scala')
+}
+
+buildRpm {
+    requires('adobe-source-code-pro-fonts')
+    requires('fzf')
+    requires('go')
+    requires('the_silver_searcher')
+    requires('tmux-powerline')
+    requires('util-linux-user')
+    requires('vim-powerline')
+    requires('java-9-openjdk-devel')
+    requires('nodejs')
+    requires('python')
+    requires('python-pip')
+    requires('ruby')
+    requires('scala')
+}
+
+buildDeb {
+    requires('golang')
+    requires('silversearcher-ag')
+    requires('openjdk-11-jdk')
+    requires('nodejs')
+    requires('python')
+    requires('python-pip')
+    requires('ruby')
+    requires('rbenv')
+    requires('zulu-10')
+}
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}

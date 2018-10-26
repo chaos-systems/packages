@@ -1,0 +1,29 @@
+ospackage {
+    packageName = 'chaossystems-repos'
+    version = '1.2.5'
+    release = '1'
+    os = LINUX
+
+    requires('curl')
+}
+
+buildRpm {
+    requires('dnf-plugins-core ')
+    postInstall file('rpm/scripts/post-install.sh')
+}
+
+buildDeb {
+    requires('gnupg2')
+    postInstall file('deb/scripts/post-install.sh')
+}
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}
