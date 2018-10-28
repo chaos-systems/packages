@@ -4,4 +4,5 @@ include 'ammonite',
         'chaossystems-fonts',
         'chaossystems-i3',
         'chaossystems-repos',
-        'ironkey'
+        'ironkey',
+        'sur5r-keyring'

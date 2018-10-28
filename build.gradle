@@ -19,7 +19,7 @@ subprojects {
         pkg {
             userOrg = 'chaos-systems'
             licenses = ['Apache-2.0']
-            vcsUrl = 'https://github.com/chaos-systems/rpm-repo'
+            vcsUrl = 'https://github.com/chaos-systems/packages'
             repo = 'deb'
 
             filesSpec {

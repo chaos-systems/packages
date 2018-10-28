@@ -27,7 +27,7 @@ buildRpm {
     requires('tmux-powerline')
     requires('util-linux-user')
     requires('vim-powerline')
-    requires('java-9-openjdk-devel')
+    requires('java-11-openjdk-devel')
     requires('nodejs')
     requires('python')
     requires('python-pip')
@@ -46,7 +46,7 @@ buildDeb {
     requires('ruby')
     requires('rbenv')
     requires('silversearcher-ag')
-    requires('zulu-10')
+    requires('zulu-11')
 }
 
 bintray {

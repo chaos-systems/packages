@@ -10,8 +10,11 @@
 
 ### Apt/Deb
 ```
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-echo "deb https://dl.bintray.com/chaos-systems/deb bionic main" | sudo tee /etc/apt/sources.list.d/chaossystems.list
+apt-get update
+apt-get install -y ca-certificates gnupg2 lsb-release software-properties-common
+apt-key adv --keyserver keyserver.ubuntu.com --recv-key 379CE192D401AB61
+apt-add-repository "deb https://dl.bintray.com/chaos-systems/deb $(lsb_release -cs) main"
+apt-get install -y chaossystems-repos
 ```
 
 ## Reference

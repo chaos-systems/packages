@@ -30,7 +30,7 @@ buildRpm {
 
 buildDeb {
     requires('python-dev')
-    requires('rxvt-unicode')
+    requires('kitty')
 }
 
 bintray {

@@ -1,13 +1,13 @@
 ospackage {
     packageName = 'ammonite'
-    version = '1.3.2'
+    version = "${ammonite.version}"
     release = '1'
     os = LINUX
 }
 
 task downloadBin(type: Download) {
     src([
-            'https://github.com/lihaoyi/Ammonite/releases/download/1.3.2/2.12-1.3.2'
+            "https://github.com/lihaoyi/Ammonite/releases/download/${ammonite.version}/2.12-${ammonite.version}"
     ])
     dest "$buildDir/amm"
     overwrite false
