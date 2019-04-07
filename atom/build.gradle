@@ -1,14 +1,14 @@
 ospackage {
     packageName = 'atom'
-    version = '1.28.2'
+    version = '1.35.1'
     release = '1'
     os = LINUX
 }
 
 task downloadPackages(type: Download) {
     src([
-            'https://github.com/atom/atom/releases/download/v1.28.2/atom-amd64.deb',
-            'https://github.com/atom/atom/releases/download/v1.28.2/atom.x86_64.rpm'
+            'https://github.com/atom/atom/releases/download/v1.35.1/atom-amd64.deb',
+            'https://github.com/atom/atom/releases/download/v1.35.1/atom.x86_64.rpm'
     ])
     dest "$buildDir/distributions/"
     overwrite false

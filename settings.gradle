@@ -5,5 +5,7 @@ include 'ammonite',
         'chaossystems-fonts',
         'chaossystems-i3',
         'chaossystems-repos',
+//        'intellij',
+//        'intellij-ce',
         'ironkey',
         'slack'

@@ -1,20 +1,20 @@
 ospackage {
     packageName = 'ammonite'
-    version = '1.1.2'
+    version = '1.6.5'
     release = '1'
     os = LINUX
 }
 
 task downloadBin(type: Download) {
     src([
-            'https://github.com/lihaoyi/Ammonite/releases/download/1.1.2/2.12-1.1.2'
+            'https://github.com/lihaoyi/Ammonite/releases/download/1.6.5/2.12-1.6.5'
     ])
     dest "$buildDir/amm"
     overwrite false
 }
 
 buildRpm {
-    requires('java-9-openjdk-devel')
+    requires('java-12-openjdk-devel')
 
     from(buildDir) {
         into '/usr/local/bin'
@@ -23,7 +23,7 @@ buildRpm {
 }
 
 buildDeb {
-    requires('openjdk-11-jdk')
+    requires('openjdk-12-jdk')
 
     from(buildDir) {
         into '/usr/local/bin'

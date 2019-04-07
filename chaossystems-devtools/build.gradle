@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '1.4.0'
-    release = '2'
+    version = '1.5.0'
+    release = '1'
     os = LINUX
 
     requires('ammonite')
@@ -31,9 +31,9 @@ buildRpm {
     requires('java-9-openjdk-devel')
     requires('nodejs')
     requires('python')
+    requires('python-devel')
     requires('python-pip')
     requires('ruby')
-    requires('scala')
 }
 
 buildDeb {
@@ -42,6 +42,7 @@ buildDeb {
     requires('openjdk-11-jdk')
     requires('nodejs')
     requires('python')
+    requires('python-dev')
     requires('python-pip')
     requires('ruby')
     requires('rbenv')

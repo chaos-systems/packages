@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'chaossystems-i3'
-    version = '1.5.2'
-    release = '2'
+    version = '1.5.3'
+    release = '1'
     os = LINUX
 
     requires('chaossystems-fonts')
