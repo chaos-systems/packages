@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.6"
 
 services:
   # usage: docker-compose run rpm
@@ -13,7 +13,7 @@ services:
       - .:/rpm-build:rw
 
   rpm-test:
-    image: fedora:28
+    image: fedora:30
     command: /bin/bash
     tty: true
     stdin_open: true

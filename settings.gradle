@@ -1,5 +1,4 @@
 include 'ammonite',
-        'atom',
         'chaossystems-desktop',
         'chaossystems-devtools',
         'chaossystems-fonts',
@@ -7,5 +6,4 @@ include 'ammonite',
         'chaossystems-repos',
 //        'intellij',
 //        'intellij-ce',
-        'ironkey',
-        'slack'
+        'ironkey'
