@@ -1,14 +1,11 @@
 plugins {
-    id "nebula.ospackage" version "5.0.2"
-    id "com.jfrog.bintray" version "1.8.3"
-    id "de.undercouch.download" version "3.4.3"
+    id "nebula.ospackage" version "8.0.3"
+    id "com.jfrog.bintray" version "1.8.4"
+    id "de.undercouch.download" version "4.0.1"
 }
 
-subprojects {
-    apply plugin: 'nebula.ospackage'
+allprojects {
     apply plugin: 'com.jfrog.bintray'
-    apply plugin: 'de.undercouch.download'
-
     bintray {
         user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
         key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
@@ -23,14 +20,14 @@ subprojects {
             repo = 'deb'
 
             filesSpec {
-                from ('build/distributions') {
+                from('build/distributions') {
                     include '**/*.deb'
                 }
                 into '.'
             }
 
             debian {
-                distribution = 'bionic'
+                distribution = 'stable'
                 component = 'main'
                 architecture = 'i386,noarch,amd64'
             }
@@ -42,7 +39,23 @@ subprojects {
             }
         }
     }
+}
+
+subprojects {
+    apply plugin: 'nebula.ospackage'
+    apply plugin: 'de.undercouch.download'
 
     build.dependsOn buildDeb
     build.dependsOn buildRpm
+}
+
+bintray {
+    pkg {
+        name = "dummy"
+        version {
+            name = "0.0.1"
+            vcsTag = "0.0.1"
+            attributes = [:]
+        }
+    }
 }

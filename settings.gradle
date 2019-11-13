@@ -1,7 +1,10 @@
-include 'ammonite',
-        'chaossystems-desktop',
+include 'chaossystems-desktop',
         'chaossystems-devtools',
         'chaossystems-fonts',
         'chaossystems-i3',
         'chaossystems-repos',
         'ironkey'
+
+//'ammonite',
+//        'intellij',
+//        'intellij-ce',

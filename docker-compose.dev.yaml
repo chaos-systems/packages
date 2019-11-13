@@ -1,0 +1,17 @@
+version: "3.6"
+
+services:
+  vscode:
+    build: 
+      context: .
+      dockerfile: Dockerfile.vscode
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - .:/workspace
+      # This lets you avoid setting up Git again in the container
+      - ~/.gitconfig:/root/.gitconfig
+      # Forwards the local Docker socket to the container.
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity 

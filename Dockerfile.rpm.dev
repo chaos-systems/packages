@@ -1,5 +1,5 @@
 FROM chaossystems/build-rpm:master
-MAINTAINER Greg Orzell <devops@keen.io>
+MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 ENV HOME /root
 WORKDIR /rpm-build

@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-repos'
-    version = '1.2.5'
+    version = '2.0.1'
     release = '1'
     os = LINUX
 
@@ -14,6 +14,9 @@ buildRpm {
 
 buildDeb {
     requires('gnupg2')
+    from('deb/files/sources.list.d') {
+        into '/etc/apt/sources.list.d'
+    }
     postInstall file('deb/scripts/post-install.sh')
 }
 

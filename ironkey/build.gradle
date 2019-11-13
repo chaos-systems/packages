@@ -1,10 +1,12 @@
+
 ospackage {
     packageName = 'ironkey'
-    version = '2.3.0'
-    release = '2'
+    version = '2.4.0'
+    release = '1'
     os = LINUX
 
     requires('bindfs')
+    requires('hfsprogs')
 }
 
 buildRpm {
@@ -13,7 +15,8 @@ buildRpm {
 }
 
 buildDeb {
-    requires('lib32ncurses5')
+    requires('hfsprogs')
+    requires('lib32ncurses5-dev')
     requires('lib32z1')
     requires('lib32gcc1')
 }

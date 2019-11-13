@@ -1,0 +1,16 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"name": "Linux Packages",
+	"dockerComposeFile": "../docker-compose.dev.yaml",
+	"service": "vscode",
+	"workspaceFolder": "/workspace",
+	"extensions": [
+		"peterjausovec.vscode-docker",
+		"redhat.java"
+	],
+	"settings": {
+		"remote.extensionKind": {
+			"peterjausovec.vscode-docker": "workspace"
+		}
+	}
+}
