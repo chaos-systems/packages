@@ -1,22 +1,16 @@
 version: "3.6"
 
 services:
-  # usage: docker-compose run rpm
-  rpm-build:
+  build:
     build:
       context: .
-      dockerfile: Dockerfile.rpm
-    tty: true
-    stdin_open: true
-    working_dir: /rpm-build
+      dockerfile: Dockerfile.build
+    working_dir: /build
     volumes:
-      - .:/rpm-build:rw
+      - .:/build:rw
 
   rpm-test:
-    image: fedora:30
-    command: /bin/bash
-    tty: true
-    stdin_open: true
+    image: fedora:latest
     working_dir: /rpm-build
     volumes:
       - .:/rpm-build:rw
@@ -24,10 +18,9 @@ services:
   ubuntu-test:
     build:
       context: .
-      dockerfile: Dockerfile.ubuntu
+      dockerfile: Dockerfile.ubuntu.test
+    working_dir: /workspace
+#    command: apt-get install -y chaossystems-devtools
     command: /bin/bash
     tty: true
     stdin_open: true
-    working_dir: /rpm-build
-    volumes:
-      - .:/rpm-build:rw

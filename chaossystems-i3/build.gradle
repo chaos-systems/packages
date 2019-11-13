@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-i3'
-    version = '1.5.3'
+    version = '1.5.4'
     release = '1'
     os = LINUX
 
@@ -14,8 +14,10 @@ ospackage {
     requires('i3')
     requires('i3lock')
     requires('i3status')
+    requires('kitty')
     requires('lxappearance')
     requires('powerline')
+    requires('python-pip')
     requires('xbacklight')
 
     postInstall file('scripts/post-install.sh')

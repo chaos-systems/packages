@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'chaossystems-repos'
-    version = '1.1.1'
-    release = '2'
+    version = '2.0.1'
+    release = '1'
     os = LINUX
 
     requires('curl')
@@ -14,8 +14,8 @@ buildRpm {
 
 buildDeb {
     requires('gnupg2')
-    from('files/sources.list.d') {
-        into '/etc/apt'
+    from('deb/files/sources.list.d') {
+        into '/etc/apt/sources.list.d'
     }
     postInstall file('deb/scripts/post-install.sh')
 }
