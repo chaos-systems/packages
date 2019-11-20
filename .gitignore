@@ -5,6 +5,7 @@
 docker-compose.override.yaml
 
 build/
+!.github/actions/build
 rpmbuild/
 repo/
 
