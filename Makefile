@@ -8,5 +8,5 @@ build:
 	./gradlew build buildDeb buildRpm
 
 .PHONY: publish
-publish: build
+publish:
 	./gradlew bintrayUpload bintrayPublish
