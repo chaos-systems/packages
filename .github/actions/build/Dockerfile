@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:13
+FROM azul/zulu-openjdk:15
 
 RUN apt-get update \
     && apt-get install -y \
