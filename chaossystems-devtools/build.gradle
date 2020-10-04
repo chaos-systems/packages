@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '2.0.0'
+    version = '3.0.0'
     release = '1'
     os = LINUX
 
