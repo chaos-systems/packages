@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-i3'
-    version = '1.6.0'
+    version = '1.6.1'
     release = '1'
     os = LINUX
 
