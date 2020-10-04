@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '1.7.0'
-    release = '2'
+    version = '1.8.0'
+    release = '1'
     os = LINUX
 
     requires('bat')
@@ -14,6 +14,7 @@ ospackage {
     requires('hostname')
     requires('jq')
     requires('make')
+    requires('ripgrep')
     requires('sudo')
     requires('tmux')
     requires('traceroute')
@@ -25,11 +26,10 @@ buildRpm {
     requires('adobe-source-code-pro-fonts')
     requires('fzf')
     requires('go')
-    requires('the_silver_searcher')
     requires('tmux-powerline')
     requires('util-linux-user')
     requires('vim-powerline')
-    requires('java-9-openjdk-devel')
+    requires('java-14-openjdk-devel')
     requires('nodejs')
     requires('python')
     requires('python-devel')
@@ -46,7 +46,7 @@ buildDeb {
     requires('python-pip')
     requires('ruby')
     requires('rbenv')
-    requires('zulu-13')
+    requires('zulu-15')
 }
 
 bintray {

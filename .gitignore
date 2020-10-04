@@ -2,6 +2,7 @@
 .idea
 
 .aws
+.gradle
 docker-compose.override.yaml
 
 build/
