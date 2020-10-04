@@ -1,15 +1,15 @@
 ospackage {
-    packageName = 'exa'
-    version = "${exaVersion}"
+    packageName = 'procs'
+    version = "${procsVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/ogham/exa/releases/download/v${exaVersion}/exa-linux-x86_64-${exaVersion}.zip"
+            "https://github.com/dalance/procs/releases/download/v${procsVersion}/procs-v${procsVersion}-x86_64-lnx.zip"
     ])
-    dest "$buildDir/exa.zip"
+    dest "$buildDir/procs.zip"
     overwrite false
 }
 
@@ -17,13 +17,13 @@ task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
     from zipTree(downloadZipFile.dest)
     into buildDir
 
-    rename 'exa-linux-x86_64', 'exa'
+    // rename 'exa-linux-x86_64', 'exa'
 }
 
 buildRpm {
     from(buildDir) {
         into '/usr/local/bin'
-        include "exa"
+        include "procs"
     }
 }
 
@@ -31,7 +31,7 @@ buildDeb {
     from(buildDir) {
         into '/usr/local/bin'
 
-        include "exa"
+        include "procs"
     }
 }
 

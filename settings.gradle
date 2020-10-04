@@ -1,6 +1,12 @@
-include 'chaossystems-desktop',
+include 'chaossystems-cli',
+        'chaossystems-desktop',
         'chaossystems-devtools',
         'chaossystems-fonts',
         'chaossystems-i3',
+        'dust',
         'exa',
-        'ironkey'
+        'hyperfine',
+        'ironkey',
+        'procs',
+        'starship',
+        'ytop'
