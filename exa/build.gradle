@@ -1,0 +1,50 @@
+ospackage {
+    packageName = 'exa'
+    version = '0.9.0'
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            'https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip'
+    ])
+    dest "$buildDir/exa.zip"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from zipTree(downloadZipFile.dest)
+    into buildDir
+
+    rename 'exa-linux-x86_64', 'exa'
+}
+
+buildRpm {
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "exa"
+    }
+}
+
+buildDeb {
+    from(buildDir) {
+        into '/usr/local/bin'
+
+        include "exa"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}
