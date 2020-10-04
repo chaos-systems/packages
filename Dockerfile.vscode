@@ -20,7 +20,7 @@ RUN apt-get update \
     && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable" \
     && apt-add-repository 'deb http://repos.azulsystems.com/debian stable main' \
     && apt-get update \
-    && apt-get install -y docker-ce-cli zulu-15 \
+    && apt-get install -y docker-ce-cli zulu-14 \
     #
     # Install Docker Compose
     && curl -sSL "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
