@@ -1,20 +1,20 @@
 ospackage {
-    packageName = 'exa'
-    version = "${exaVersion}"
+    packageName = 'ytop'
+    version = "${ytopVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/ogham/exa/releases/download/v${exaVersion}/exa-linux-x86_64-${exaVersion}.zip"
+            "https://github.com/cjbassi/ytop/releases/download/${ytopVersion}/ytop-${ytopVersion}-x86_64-unknown-linux-gnu.tar.gz"
     ])
-    dest "$buildDir/exa.zip"
+    dest "$buildDir/ytop.tar.gz"
     overwrite false
 }
 
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
-    from zipTree(downloadZipFile.dest)
+    from tarTree(downloadZipFile.dest)
     into buildDir
 
     rename 'exa-linux-x86_64', 'exa'
@@ -23,7 +23,7 @@ task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
 buildRpm {
     from(buildDir) {
         into '/usr/local/bin'
-        include "exa"
+        include "ytop"
     }
 }
 
@@ -31,7 +31,7 @@ buildDeb {
     from(buildDir) {
         into '/usr/local/bin'
 
-        include "exa"
+        include "ytop"
     }
 }
 

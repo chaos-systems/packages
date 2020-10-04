@@ -38,4 +38,4 @@ COPY gradlew .
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
-ENV JAVA_HOME=/usr/lib/jvm/zulu-15-amd64
+ENV JAVA_HOME=/usr/lib/jvm/zulu-14-amd64

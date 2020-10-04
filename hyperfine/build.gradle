@@ -1,0 +1,12 @@
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/sharkdp/hyperfine/releases/download/v${hyperfineVersion}/hyperfine_${hyperfineVersion}_amd64.deb"
+    ])
+    dest "$buildDir/distributions/hyperfine_${hyperfineVersion}_amd64.deb"
+    overwrite false
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn downloadZipFile

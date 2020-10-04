@@ -1,0 +1,48 @@
+ospackage {
+    packageName = 'chaossystems-cli'
+    version = '1.0.0'
+    release = '1'
+    os = LINUX
+
+    requires('bat')
+    requires('containerd.io')
+    requires('curl')
+    requires('dust')
+    requires('docker-ce')
+    requires('docker-ce-cli')
+    requires('exa')
+    requires('fd-find')
+    requires('fish')
+    requires('git')
+    requires('hostname')
+    requires('hyperfine')
+    requires('jq')
+    requires('make')
+    requires('procs')
+    requires('starship')
+    requires('ripgrep')
+    requires('starship')
+    requires('sudo')
+    requires('tmux')
+    requires('traceroute')
+    requires('vim')
+    requires('wget')
+    requires('ytop')
+}
+
+buildRpm {
+}
+
+buildDeb {
+}
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}

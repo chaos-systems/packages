@@ -1,30 +1,14 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '1.8.0'
+    version = '2.0.0'
     release = '1'
     os = LINUX
 
-    requires('bat')
-    requires('containerd.io')
-    requires('curl')
-    requires('docker-ce')
-    requires('docker-ce-cli')
-    requires('fish')
-    requires('git')
-    requires('hostname')
-    requires('jq')
-    requires('make')
-    requires('ripgrep')
-    requires('sudo')
-    requires('tmux')
-    requires('traceroute')
-    requires('vim')
-    requires('wget')
+    requires('chaossystems-cli')
 }
 
 buildRpm {
     requires('adobe-source-code-pro-fonts')
-    requires('fzf')
     requires('go')
     requires('tmux-powerline')
     requires('util-linux-user')
@@ -39,7 +23,6 @@ buildRpm {
 
 buildDeb {
     requires('golang')
-    requires('silversearcher-ag')
     requires('nodejs')
     requires('python')
     requires('python-dev')
