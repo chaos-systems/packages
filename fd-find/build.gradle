@@ -14,7 +14,7 @@ build.dependsOn downloadZipFile
 
 bintray {
     pkg {
-        name = "fd-find"
+        name = "fd"
         version {
             name = "${fdfindVersion}"
             vcsTag = "${fdfindVersion}"

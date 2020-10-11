@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-cli'
-    version = '1.0.0'
+    version = '1.0.1'
     release = '1'
     os = LINUX
 
@@ -11,7 +11,7 @@ ospackage {
     requires('docker-ce')
     requires('docker-ce-cli')
     requires('exa')
-    requires('fd-find')
+    requires('fd')
     requires('fish')
     requires('git')
     requires('hostname')
