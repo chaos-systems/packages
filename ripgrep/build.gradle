@@ -1,0 +1,24 @@
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/BurntSushi/ripgrep/releases/download/${ripgrepVersion}/ripgrep_${ripgrepVersion}_amd64.deb"
+    ])
+    dest "$buildDir/distributions/ripgrep_${ripgrepVersion}_amd64.deb"
+    overwrite false
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn downloadZipFile
+
+
+bintray {
+    pkg {
+        name = "ripgrep"
+        version {
+            name = "${ripgrepVersion}"
+            vcsTag = "${ripgrepVersion}"
+            attributes = [:]
+        }
+    }
+}
