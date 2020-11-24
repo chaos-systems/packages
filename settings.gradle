@@ -1,4 +1,5 @@
 include 'bat',
+        'bottom',
         'chaossystems-cli',
         'chaossystems-desktop',
         'chaossystems-devtools',

@@ -1,0 +1,24 @@
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/ClementTsang/bottom/releases/download/${bottomVersion}/bottom_${bottomVersion}_amd64.deb"
+    ])
+    dest "$buildDir/distributions/bottom_${bottomVersion}_amd64.deb"
+    overwrite false
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn downloadZipFile
+
+
+bintray {
+    pkg {
+        name = "bottom"
+        version {
+            name = "${bottomVersion}"
+            vcsTag = "${bottomVersion}"
+            attributes = [:]
+        }
+    }
+}
