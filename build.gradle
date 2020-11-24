@@ -53,8 +53,8 @@ bintray {
     pkg {
         name = "dummy"
         version {
-            name = "0.0.1"
-            vcsTag = "0.0.1"
+            name = "1.0.0"
+            vcsTag = "1.0.0"
             attributes = [:]
         }
     }
