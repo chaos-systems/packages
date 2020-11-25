@@ -49,6 +49,13 @@ subprojects {
     build.dependsOn buildRpm
 }
 
+ospackage {
+    packageName = 'dummy'
+    version = '1.0.0'
+    release = '1'
+    os = LINUX
+}
+
 bintray {
     pkg {
         name = "dummy"
