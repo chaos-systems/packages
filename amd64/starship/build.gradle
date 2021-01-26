@@ -19,6 +19,7 @@ task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
         include "starship"
@@ -26,6 +27,7 @@ buildRpm {
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
         include "starship"

@@ -16,11 +16,10 @@ task downloadZipFile(type: Download) {
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
     from tarTree(downloadZipFile.dest)
     into buildDir
-
-    rename 'exa-linux-x86_64', 'exa'
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
         include "ytop"
@@ -28,6 +27,7 @@ buildRpm {
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
 
