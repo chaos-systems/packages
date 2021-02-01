@@ -16,7 +16,7 @@ allprojects {
         pkg {
             userOrg = 'chaos-systems'
             licenses = ['Apache-2.0']
-            vcsUrl = 'https://github.com/chaos-systems/rpm-repo'
+            vcsUrl = 'https://github.com/chaos-systems/packages'
             repo = 'deb'
 
             filesSpec {
@@ -49,20 +49,4 @@ subprojects {
     build.dependsOn buildRpm
 }
 
-ospackage {
-    packageName = 'dummy'
-    version = '1.0.0'
-    release = '1'
-    os = LINUX
-}
-
-bintray {
-    pkg {
-        name = "dummy"
-        version {
-            name = "1.0.0"
-            vcsTag = "1.0.0"
-            attributes = [:]
-        }
-    }
-}
+bintrayUpload.enabled = false
