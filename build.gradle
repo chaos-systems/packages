@@ -29,7 +29,7 @@ allprojects {
             debian {
                 distribution = 'stable'
                 component = 'main'
-                architecture = 'i386,noarch,amd64'
+                architecture = 'amd64, arm64, armhf, i386, riscv64'
             }
 
             version {
