@@ -1,0 +1,49 @@
+ospackage {
+    packageName = 'starship'
+    version = "${starshipVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/starship/starship/releases/download/v${starshipVersion}/starship-aarch64-unknown-linux-musl.tar.gz"
+    ])
+    dest "$buildDir/starship.tar.gz"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from tarTree(downloadZipFile.dest)
+    into buildDir
+}
+
+buildRpm {
+    arch = "AARCH64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "starship"
+    }
+}
+
+buildDeb {
+    arch = "arm64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "starship"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile
+
+bintray {
+    pkg {
+        name = ospackage.packageName
+        version {
+            name = ospackage.version
+            vcsTag = ospackage.version
+            attributes = [:]
+        }
+    }
+}

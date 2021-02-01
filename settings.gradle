@@ -13,5 +13,7 @@ include 'all:chaossystems-cli',
         'amd64:ripgrep',
         'amd64:starship',
         'amd64:ytop',
+        'arm64:starship',
         'armhf:ripgrep',
+        'armhf:starship',
         'ironkey'
