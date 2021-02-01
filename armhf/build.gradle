@@ -1,0 +1,2 @@
+bintrayUpload.enabled = false
+bintrayPublish.enabled = false
