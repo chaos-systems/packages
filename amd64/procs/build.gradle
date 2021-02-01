@@ -1,34 +1,37 @@
 ospackage {
-    packageName = 'starship'
-    version = "${starshipVersion}"
+    packageName = 'procs'
+    version = "${procsVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/starship/starship/releases/download/v${starshipVersion}/starship-x86_64-unknown-linux-gnu.tar.gz"
+            "https://github.com/dalance/procs/releases/download/v${procsVersion}/procs-v${procsVersion}-x86_64-lnx.zip"
     ])
-    dest "$buildDir/starship.tar.gz"
+    dest "$buildDir/procs.zip"
     overwrite false
 }
 
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
-    from tarTree(downloadZipFile.dest)
+    from zipTree(downloadZipFile.dest)
     into buildDir
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "starship"
+        include "procs"
     }
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "starship"
+
+        include "procs"
     }
 }
 

@@ -1,37 +1,36 @@
 ospackage {
-    packageName = 'ytop'
-    version = "${ytopVersion}"
+    packageName = 'starship'
+    version = "${starshipVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/cjbassi/ytop/releases/download/${ytopVersion}/ytop-${ytopVersion}-x86_64-unknown-linux-gnu.tar.gz"
+            "https://github.com/starship/starship/releases/download/v${starshipVersion}/starship-x86_64-unknown-linux-gnu.tar.gz"
     ])
-    dest "$buildDir/ytop.tar.gz"
+    dest "$buildDir/starship.tar.gz"
     overwrite false
 }
 
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
     from tarTree(downloadZipFile.dest)
     into buildDir
-
-    rename 'exa-linux-x86_64', 'exa'
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "ytop"
+        include "starship"
     }
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
-
-        include "ytop"
+        include "starship"
     }
 }
 

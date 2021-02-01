@@ -1,0 +1,50 @@
+ospackage {
+    packageName = 'ripgrep'
+    version = "${ripgrepVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/BurntSushi/ripgrep/releases/download/${ripgrepVersion}/ripgrep-${ripgrepVersion}-arm-unknown-linux-gnueabihf.tar.gz"
+    ])
+    dest "$buildDir/ripgrep.tar.gz"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from tarTree(downloadZipFile.dest)
+    into buildDir
+}
+
+buildRpm {
+    arch = "arm"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "starship"
+    }
+}
+
+buildDeb {
+    arch = "armhf"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "ripgrep"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile
+
+
+bintray {
+    pkg {
+        name = "ripgrep"
+        version {
+            name = "${ripgrepVersion}"
+            vcsTag = "${ripgrepVersion}"
+            attributes = [:]
+        }
+    }
+}

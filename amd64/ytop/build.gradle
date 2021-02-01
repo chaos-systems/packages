@@ -1,15 +1,15 @@
 ospackage {
-    packageName = 'dust'
-    version = "${dustVersion}"
+    packageName = 'ytop'
+    version = "${ytopVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/bootandy/dust/releases/download/v${dustVersion}/dust-v${dustVersion}-x86_64-unknown-linux-gnu.tar.gz"
+            "https://github.com/cjbassi/ytop/releases/download/${ytopVersion}/ytop-${ytopVersion}-x86_64-unknown-linux-gnu.tar.gz"
     ])
-    dest "$buildDir/dust.tar.gz"
+    dest "$buildDir/ytop.tar.gz"
     overwrite false
 }
 
@@ -19,17 +19,19 @@ task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "dust-v${dustVersion}-x86_64-unknown-linux-gnu/dust"
+        include "ytop"
     }
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
 
-        include "dust-v${dustVersion}-x86_64-unknown-linux-gnu/dust"
+        include "ytop"
     }
 }
 

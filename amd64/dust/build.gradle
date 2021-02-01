@@ -1,37 +1,37 @@
 ospackage {
-    packageName = 'procs'
-    version = "${procsVersion}"
+    packageName = 'dust'
+    version = "${dustVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/dalance/procs/releases/download/v${procsVersion}/procs-v${procsVersion}-x86_64-lnx.zip"
+            "https://github.com/bootandy/dust/releases/download/v${dustVersion}/dust-v${dustVersion}-x86_64-unknown-linux-gnu.tar.gz"
     ])
-    dest "$buildDir/procs.zip"
+    dest "$buildDir/dust.tar.gz"
     overwrite false
 }
 
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
-    from zipTree(downloadZipFile.dest)
+    from tarTree(downloadZipFile.dest)
     into buildDir
-
-    // rename 'exa-linux-x86_64', 'exa'
 }
 
 buildRpm {
+    arch = "x86_64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "procs"
+        include "dust-v${dustVersion}-x86_64-unknown-linux-gnu/dust"
     }
 }
 
 buildDeb {
+    arch = "amd64"
     from(buildDir) {
         into '/usr/local/bin'
 
-        include "procs"
+        include "dust-v${dustVersion}-x86_64-unknown-linux-gnu/dust"
     }
 }
 

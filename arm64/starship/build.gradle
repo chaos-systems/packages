@@ -1,37 +1,36 @@
 ospackage {
-    packageName = 'exa'
-    version = "${exaVersion}"
+    packageName = 'starship'
+    version = "${starshipVersion}"
     release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/ogham/exa/releases/download/v${exaVersion}/exa-linux-x86_64-${exaVersion}.zip"
+            "https://github.com/starship/starship/releases/download/v${starshipVersion}/starship-aarch64-unknown-linux-musl.tar.gz"
     ])
-    dest "$buildDir/exa.zip"
+    dest "$buildDir/starship.tar.gz"
     overwrite false
 }
 
 task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
-    from zipTree(downloadZipFile.dest)
+    from tarTree(downloadZipFile.dest)
     into buildDir
-
-    rename 'exa-linux-x86_64', 'exa'
 }
 
 buildRpm {
+    arch = "AARCH64"
     from(buildDir) {
         into '/usr/local/bin'
-        include "exa"
+        include "starship"
     }
 }
 
 buildDeb {
+    arch = "arm64"
     from(buildDir) {
         into '/usr/local/bin'
-
-        include "exa"
+        include "starship"
     }
 }
 
