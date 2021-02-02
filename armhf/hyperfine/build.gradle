@@ -1,0 +1,25 @@
+task downloadZipFile(type: Download) {
+    src([
+            //https://github.com/sharkdp/hyperfine/releases/download/v1.11.0/hyperfine_1.11.0_armhf.deb
+            "https://github.com/sharkdp/hyperfine/releases/download/v${hyperfineVersion}/hyperfine_${hyperfineVersion}_armhf.deb"
+    ])
+    dest "$buildDir/distributions/hyperfine_${hyperfineVersion}_armhf.deb"
+    overwrite false
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn downloadZipFile
+
+
+bintray {
+    pkg {
+        name = "hyperfine"
+        version {
+            name = "${hyperfineVersion}"
+            vcsTag = "${hyperfineVersion}"
+            attributes = [:]
+        }
+    }
+}

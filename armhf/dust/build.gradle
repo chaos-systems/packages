@@ -1,15 +1,15 @@
 ospackage {
-    packageName = 'ripgrep'
-    version = "${ripgrepVersion}"
-    release = '2'
+    packageName = 'dust'
+    version = "${dustVersion}"
+    release = '1'
     os = LINUX
 }
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/BurntSushi/ripgrep/releases/download/${ripgrepVersion}/ripgrep-${ripgrepVersion}-arm-unknown-linux-gnueabihf.tar.gz"
+            "https://github.com/bootandy/dust/releases/download/v${dustVersion}/dust-v${dustVersion}-arm-unknown-linux-gnueabihf.tar.gz"
     ])
-    dest "$buildDir/ripgrep.tar.gz"
+    dest "$buildDir/dust.tar.gz"
     overwrite false
 }
 
@@ -22,7 +22,7 @@ buildRpm {
     arch = "arm"
     from(buildDir) {
         into '/usr/local/bin'
-        include "ripgrep"
+        include "dust-v${dustVersion}-arm-unknown-linux-gnueabihf/dust"
     }
 }
 
@@ -30,20 +30,20 @@ buildDeb {
     arch = "armhf"
     from(buildDir) {
         into '/usr/local/bin'
-        include "ripgrep"
+
+        include "dust-v${dustVersion}-arm-unknown-linux-gnueabihf/dust"
     }
 }
 
 buildRpm.dependsOn downloadAndUnzipFile
 buildDeb.dependsOn downloadAndUnzipFile
 
-
 bintray {
     pkg {
-        name = "ripgrep"
+        name = ospackage.packageName
         version {
-            name = "${ripgrepVersion}"
-            vcsTag = "${ripgrepVersion}"
+            name = ospackage.version
+            vcsTag = ospackage.version
             attributes = [:]
         }
     }
