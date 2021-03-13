@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-cli'
-    version = '1.0.1'
+    version = '1.1.0'
     release = '1'
     os = LINUX
 
@@ -18,6 +18,7 @@ ospackage {
     requires('hyperfine')
     requires('jq')
     requires('make')
+    requires('neovim')
     requires('procs')
     requires('starship')
     requires('ripgrep')

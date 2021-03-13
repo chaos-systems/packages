@@ -1,6 +1,6 @@
 ospackage {
     packageName = 'chaossystems-devtools'
-    version = '3.0.0'
+    version = '4.0.0'
     release = '1'
     os = LINUX
 
@@ -24,12 +24,12 @@ buildRpm {
 buildDeb {
     requires('golang')
     requires('nodejs')
+    requires('openjdk-15-jdk')
     requires('python')
     requires('python-dev')
     requires('python-pip')
     requires('ruby')
     requires('rbenv')
-    requires('zulu-15')
 }
 
 bintray {
