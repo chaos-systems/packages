@@ -47,6 +47,15 @@ subprojects {
 
     build.dependsOn buildDeb
     build.dependsOn buildRpm
+
+    task gatherDebs(dependsOn: buildDeb, type: Copy){
+        from (buildDir) {
+            include "**/*.deb"
+        }
+        into rootProject.buildDir
+        includeEmptyDirs = false
+    }
+    build.dependsOn gatherDebs
 }
 
 bintrayUpload.enabled = false

@@ -2,8 +2,7 @@ version: "3.6"
 
 services:
   # usage: docker-compose run rpm
-  rpm:
-    build: ..
+  ubuntu-test:
     tty: true
     stdin_open: true
     command: fish

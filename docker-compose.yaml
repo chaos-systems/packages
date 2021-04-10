@@ -1,19 +1,6 @@
 version: "3.6"
 
 services:
-  build:
-    build:
-      context: .
-      dockerfile: Dockerfile.build
-    working_dir: /build
-    volumes:
-      - .:/build:rw
-
-  rpm-test:
-    image: fedora:latest
-    working_dir: /rpm-build
-    volumes:
-      - .:/rpm-build:rw
 
   ubuntu-test:
     build:
