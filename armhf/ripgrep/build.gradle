@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'ripgrep'
     version = "${ripgrepVersion}"
-    release = '2'
+    release = '3'
     os = LINUX
 }
 
@@ -22,7 +22,7 @@ buildRpm {
     arch = "arm"
     from(buildDir) {
         into '/usr/local/bin'
-        include "ripgrep"
+        include "rg"
     }
 }
 
@@ -30,7 +30,7 @@ buildDeb {
     arch = "armhf"
     from(buildDir) {
         into '/usr/local/bin'
-        include "ripgrep"
+        include "ripgrep-${ripgrepVersion}-arm-unknown-linux-gnueabihf/rg"
     }
 }
 
