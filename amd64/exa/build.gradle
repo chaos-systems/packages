@@ -7,7 +7,7 @@ ospackage {
 
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/ogham/exa/releases/download/v${exaVersion}/exa-linux-x86_64-${exaVersion}.zip"
+            "https://github.com/ogham/exa/releases/download/v${exaVersion}/exa-linux-x86_64-v${exaVersion}.zip"
     ])
     dest "$buildDir/exa.zip"
     overwrite false
