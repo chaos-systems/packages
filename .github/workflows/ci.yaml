@@ -1,4 +1,4 @@
-name: Build & Publish
+name: Build
 on: [push]
 
 jobs:
@@ -8,6 +8,4 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Build
-      uses: ./.github/actions/build
-      with:
-        args: build
+      run: ./gradlew build buildDeb buildRpm
