@@ -1,8 +1,8 @@
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/sharkdp/hyperfine/releases/download/v${hyperfineVersion}/hyperfine_${hyperfineVersion}_armhf.deb"
+            "https://github.com/sharkdp/hyperfine/releases/download/v${hyperfineVersion}/hyperfine_${hyperfineVersion}_arm64.deb"
     ])
-    dest "$buildDir/distributions/hyperfine_${hyperfineVersion}_armhf.deb"
+    dest "$buildDir/distributions/hyperfine_${hyperfineVersion}_arm64.deb"
     overwrite false
 }
 

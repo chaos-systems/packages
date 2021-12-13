@@ -1,0 +1,23 @@
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/sharkdp/bat/releases/download/v${batVersion}/bat_${batVersion}_arm64.deb"
+    ])
+    dest "$buildDir/distributions/bat_${batVersion}_arm64.deb"
+    overwrite false
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn downloadZipFile
+
+bintray {
+    pkg {
+        name = "bat"
+        version {
+            name = "${batVersion}"
+            vcsTag = "${batVersion}"
+            attributes = [:]
+        }
+    }
+}
