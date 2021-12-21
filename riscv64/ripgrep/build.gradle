@@ -1,0 +1,25 @@
+
+task prep(type: Exec){
+    workingDir '../../../ripgrep'
+
+    commandLine './ci/build-deb'
+    // This command will probably fail, but it will copy the file we care about first, so that is ok.
+    ignoreExitValue true
+}
+
+task crossCompile(type: Exec, dependsOn: prep) {
+    workingDir '../../../ripgrep'
+
+    commandLine 'cross',  'build', '--release', '--target', 'riscv64gc-unknown-linux-gnu'
+}
+
+task deb(type: Exec, dependsOn: crossCompile){
+    workingDir '../../../ripgrep'
+
+    commandLine 'cargo', 'deb', '--no-build', '--no-strip', '--target', 'riscv64gc-unknown-linux-gnu', '--output', "$buildDir/distributions/"
+}
+
+buildDeb.enabled = false
+buildRpm.enabled = false
+
+build.dependsOn deb
