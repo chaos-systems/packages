@@ -23,5 +23,5 @@ include 'all:chaossystems-cli',
         'armhf:fd-find',
         'armhf:ripgrep',
         'armhf:starship',
-        'riscv64:ripgrep'
+        //'riscv64:ripgrep',
         'ironkey'

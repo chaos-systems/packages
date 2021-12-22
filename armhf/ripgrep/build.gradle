@@ -36,15 +36,3 @@ buildDeb {
 
 buildRpm.dependsOn downloadAndUnzipFile
 buildDeb.dependsOn downloadAndUnzipFile
-
-
-bintray {
-    pkg {
-        name = "ripgrep"
-        version {
-            name = "${ripgrepVersion}"
-            vcsTag = "${ripgrepVersion}"
-            attributes = [:]
-        }
-    }
-}

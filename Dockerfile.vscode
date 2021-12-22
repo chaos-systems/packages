@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM rust:bullseye
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -27,10 +27,9 @@ RUN apt-get update \
     && chmod +x /usr/local/bin/docker-compose \
     #
     # Install Rust tools
-    && apt-get install -y --no-install-recommends build-essential libssl-dev clang \
-    && curl https://sh.rustup.rs -sSf | bash -s -- -y \
-    && /root/.cargo/bin/cargo install cross \
-    && /root/.cargo/bin/cargo install cargo-deb \
+    && apt-get install -y --no-install-recommends aptly build-essential libssl-dev clang \
+    && cargo install cross \
+    && cargo install cargo-deb \
     #
     # Clean up
     && apt-get autoremove -y \
@@ -45,6 +44,4 @@ COPY gradlew .
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 ENV JAVA_HOME=/usr/lib/jvm/zulu-14-amd64
-ENV CARGO_HOME=/root/.cargo
 ENV CROSS_DOCKER_IN_DOCKER=true
-ENV PATH=$PATH:/root/.cargo/bin

@@ -34,14 +34,3 @@ buildDeb {
     requires('python-dev')
     requires('rxvt-unicode')
 }
-
-bintray {
-    pkg {
-        name = ospackage.packageName
-        version {
-            name = ospackage.version
-            vcsTag = ospackage.version
-            attributes = [:]
-        }
-    }
-}

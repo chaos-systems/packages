@@ -36,14 +36,3 @@ buildDeb {
 
 buildRpm.dependsOn downloadFonts
 buildDeb.dependsOn downloadFonts
-
-bintray {
-    pkg {
-        name = ospackage.packageName
-        version {
-            name = ospackage.version
-            vcsTag = ospackage.version
-            attributes = [:]
-        }
-    }
-}

@@ -36,14 +36,3 @@ buildRpm {
 
 buildDeb {
 }
-
-bintray {
-    pkg {
-        name = ospackage.packageName
-        version {
-            name = ospackage.version
-            vcsTag = ospackage.version
-            attributes = [:]
-        }
-    }
-}

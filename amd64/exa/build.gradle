@@ -39,14 +39,3 @@ buildDeb {
 
 buildRpm.dependsOn downloadAndUnzipFile
 buildDeb.dependsOn downloadAndUnzipFile
-
-bintray {
-    pkg {
-        name = ospackage.packageName
-        version {
-            name = ospackage.version
-            vcsTag = ospackage.version
-            attributes = [:]
-        }
-    }
-}

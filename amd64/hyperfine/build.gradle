@@ -10,15 +10,3 @@ buildDeb.enabled = false
 buildRpm.enabled = false
 
 build.dependsOn downloadZipFile
-
-
-bintray {
-    pkg {
-        name = "hyperfine"
-        version {
-            name = "${hyperfineVersion}"
-            vcsTag = "${hyperfineVersion}"
-            attributes = [:]
-        }
-    }
-}

@@ -5,7 +5,7 @@
 ### Apt/Deb
 ```
 curl -fsSL https://apt.cha0s.dev/pub.gpg | (OUT=$(sudo apt-key add - 2>&1) || echo $OUT)
-echo "deb https://apt.cha0s.dev stable main" | sudo tee -a /etc/apt/sources.list.d/chaos-dev.list \
+echo "deb https://apt.cha0s.dev stable main" | sudo tee -a /etc/apt/sources.list.d/chaos-dev.list
 ```
 
 ## Additional Repos

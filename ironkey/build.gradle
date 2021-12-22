@@ -20,14 +20,3 @@ buildDeb {
     requires('lib32z1')
     requires('lib32gcc1')
 }
-
-bintray {
-    pkg {
-        name = ospackage.packageName
-        version {
-            name = ospackage.version
-            vcsTag = ospackage.version
-            attributes = [:]
-        }
-    }
-}

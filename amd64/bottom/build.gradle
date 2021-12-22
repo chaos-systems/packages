@@ -10,14 +10,3 @@ buildDeb.enabled = false
 buildRpm.enabled = false
 
 build.dependsOn downloadZipFile
-
-bintray {
-    pkg {
-        name = "bottom"
-        version {
-            name = "${bottomVersion}"
-            vcsTag = "${bottomVersion}"
-            attributes = [:]
-        }
-    }
-}
