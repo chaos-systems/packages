@@ -1,17 +1,26 @@
 ospackage {
     packageName = 'chaossystems-fonts'
-    version = '1.0.2'
+    version = '1.1.0'
     release = '1'
     os = LINUX
 }
 
 task downloadFonts(type: Download) {
     src([
-            'https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Italic.otf',
-            'https://github.com/adobe-fonts/source-code-pro/releases/download/variable-fonts/SourceCodeVariable-Roman.otf'
+            'https://github.com/adobe-fonts/source-code-pro/releases/download/2.038R-ro%2F1.058R-it%2F1.018R-VAR/OTF-source-code-pro-2.038R-ro-1.058R-it.zip',
+            'https://github.com/adobe-fonts/source-code-pro/releases/download/2.038R-ro%2F1.058R-it%2F1.018R-VAR/VAR-source-code-var-1.018R.zip',
+            'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip',
+            'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraMono.zip'
     ])
     dest buildDir
     overwrite false
+}
+
+task unzipFonts(dependsOn: downloadFonts, type: Copy) {
+    fileTree(dir: downloadFonts.dest, includes: ['*.zip']).each { zipFile ->
+        from zipTree(zipFile)
+    }
+    into buildDir
 }
 
 buildRpm {
@@ -20,7 +29,7 @@ buildRpm {
 
     from(buildDir) {
         into '/usr/share/fonts/local'
-        include "*.otf"
+        include "**/*.otf"
     }
 }
 
@@ -30,9 +39,9 @@ buildDeb {
 
     from(buildDir) {
         into '/usr/share/fonts/opentypes'
-        include "*.otf"
+        include "**/*.otf"
     }
 }
 
-buildRpm.dependsOn downloadFonts
-buildDeb.dependsOn downloadFonts
+buildRpm.dependsOn unzipFonts
+buildDeb.dependsOn unzipFonts
