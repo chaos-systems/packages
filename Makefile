@@ -1,6 +1,7 @@
 .PHONY: bootstrap
 bootstrap:
 	aptly repo create -distribution=stable -component=main cha0s-dev
+	# aptly publish repo cha0s-dev
 
 .PHONY: clean
 clean:
