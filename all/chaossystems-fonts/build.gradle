@@ -17,6 +17,7 @@ task downloadFonts(type: Download) {
 }
 
 task unzipFonts(dependsOn: downloadFonts, type: Copy) {
+    duplicatesStrategy = 'exclude'
     fileTree(dir: downloadFonts.dest, includes: ['*.zip']).each { zipFile ->
         from zipTree(zipFile)
     }
