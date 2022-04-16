@@ -1,15 +1,12 @@
 ospackage {
     packageName = 'chaossystems-cli'
-    version = '1.1.0'
+    version = '1.2.0'
     release = '1'
     os = LINUX
 
     requires('bat')
-    requires('containerd.io')
     requires('curl')
     requires('dust')
-    requires('docker-ce')
-    requires('docker-ce-cli')
     requires('exa')
     requires('fd')
     requires('fish')
@@ -20,7 +17,6 @@ ospackage {
     requires('make')
     requires('neovim')
     requires('procs')
-    requires('starship')
     requires('ripgrep')
     requires('starship')
     requires('sudo')
