@@ -1,0 +1,38 @@
+ospackage {
+    packageName = 'mold'
+    version = "${moldVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/rui314/mold/releases/download/v${moldVersion}/mold-${moldVersion}-aarch64-linux.tar.gz"
+    ])
+    dest "$buildDir/mold.tar.gz"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from tarTree(downloadZipFile.dest)
+    into buildDir
+}
+
+buildRpm {
+    arch = "AARCH64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "mold"
+    }
+}
+
+buildDeb {
+    arch = "arm64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "mold"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile

@@ -1,0 +1,39 @@
+ospackage {
+    packageName = 'rust-analyzer'
+    version = "${rustanalyzerVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/rust-lang/rust-analyzer/releases/download/${rustanalyzerVersion}/rust-analyzer-aarch64-unknown-linux-gnu.gz"
+    ])
+    dest "$buildDir/rust-analyzer.gz"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile) {
+    file("${buildDir}/rust-analyzer").withOutputStream { os ->
+        os << resources.gzip("${buildDir}/rust-analyzer.gz").read()
+    }
+}
+
+buildRpm {
+    arch = "AARCH64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "rust-analyzer"
+    }
+}
+
+buildDeb {
+    arch = "arm64"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "rust-analyzer"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile

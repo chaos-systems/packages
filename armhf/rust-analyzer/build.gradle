@@ -1,0 +1,39 @@
+ospackage {
+    packageName = 'rust-analyzer'
+    version = "${rustanalyzerVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/rust-lang/rust-analyzer/releases/download/${rustanalyzerVersion}/rust-analyzer-arm-unknown-linux-gnueabihf.gz"
+    ])
+    dest "$buildDir/rust-analyzer.gz"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile) {
+    file("${buildDir}/rust-analyzer").withOutputStream { os ->
+        os << resources.gzip("${buildDir}/rust-analyzer.gz").read()
+    }
+}
+
+buildRpm {
+    arch = "arm"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "rust-analyzer"
+    }
+}
+
+buildDeb {
+    arch = "armhf"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "rust-analyzer"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile
