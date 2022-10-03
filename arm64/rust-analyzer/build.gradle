@@ -24,6 +24,7 @@ buildRpm {
     from(buildDir) {
         into '/usr/local/bin'
         include "rust-analyzer"
+        fileMode 0755
     }
 }
 
@@ -32,6 +33,7 @@ buildDeb {
     from(buildDir) {
         into '/usr/local/bin'
         include "rust-analyzer"
+        fileMode 0755
     }
 }
 
