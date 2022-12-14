@@ -1,7 +1,7 @@
 ospackage {
     packageName = 'mold'
     version = "${moldVersion}"
-    release = '1'
+    release = '3'
     os = LINUX
 }
 
@@ -9,7 +9,7 @@ task downloadZipFile(type: Download) {
     src([
             "https://github.com/rui314/mold/releases/download/v${moldVersion}/mold-${moldVersion}-x86_64-linux.tar.gz"
     ])
-    dest "$buildDir/mold.tar.gz"
+    dest "$buildDir/mold-${moldVersion}.tar.gz"
     overwrite false
 }
 
@@ -28,9 +28,17 @@ buildRpm {
 
 buildDeb {
     arch = "amd64"
-    from(buildDir) {
+    from("$buildDir/mold-${moldVersion}-x86_64-linux/bin") {
         into '/usr/local/bin'
-        include "mold"
+    }
+    from("$buildDir/mold-${moldVersion}-x86_64-linux/lib") {
+        into '/usr/local/lib'
+    }
+    from("$buildDir/mold-${moldVersion}-x86_64-linux/libexec") {
+        into '/usr/local/libexec'
+    }
+    from("$buildDir/mold-${moldVersion}-x86_64-linux/share") {
+        into '/usr/local/share'
     }
 }
 
