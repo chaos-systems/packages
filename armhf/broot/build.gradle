@@ -1,0 +1,38 @@
+ospackage {
+    packageName = 'broot'
+    version = "${brootVersion}"
+    release = '1'
+    os = LINUX
+}
+
+task downloadZipFile(type: Download) {
+    src([
+            "https://github.com/Canop/broot/releases/download/v${brootVersion}/broot_${brootVersion}.zip"
+    ])
+    dest "$buildDir/broot-${brootVersion}.zip"
+    overwrite false
+}
+
+task downloadAndUnzipFile(dependsOn: downloadZipFile, type: Copy) {
+    from zipTree(downloadZipFile.dest)
+    into buildDir
+}
+
+buildRpm {
+    arch = "arm"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "armv7-unknown-linux-gnueabihf/broot"
+    }
+}
+
+buildDeb {
+    arch = "armhf"
+    from(buildDir) {
+        into '/usr/local/bin'
+        include "armv7-unknown-linux-gnueabihf/broot"
+    }
+}
+
+buildRpm.dependsOn downloadAndUnzipFile
+buildDeb.dependsOn downloadAndUnzipFile
