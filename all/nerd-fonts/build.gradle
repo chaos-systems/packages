@@ -1,17 +1,18 @@
 ospackage {
-    packageName = 'chaossystems-fonts'
-    version = '1.3.0'
-    release = '2'
+    packageName = 'nerd-fonts'
+    version = "${nerdfontsVersion}"
+    release = '1'
     os = LINUX
 }
 
 task downloadFonts(type: Download) {
     src([
-            'https://github.com/adobe-fonts/source-code-pro/releases/download/2.042R-u%2F1.062R-i%2F1.026R-vf/OTF-source-code-pro-2.042R-u_1.062R-i.zip',
-            'https://github.com/adobe-fonts/source-code-pro/releases/download/2.042R-u%2F1.062R-i%2F1.026R-vf/VF-source-code-VF-1.026R.zip',
+            "https://github.com/ryanoasis/nerd-fonts/releases/download/v${nerdfontsVersion}/SourceCodePro.zip",
+            "https://github.com/ryanoasis/nerd-fonts/releases/download/v${nerdfontsVersion}/FiraMono.zip",
+            "https://github.com/ryanoasis/nerd-fonts/releases/download/v${nerdfontsVersion}/Monaspace.zip"
     ])
     dest buildDir
-    overwrite false
+    onlyIfModified true
 }
 
 task unzipFonts(dependsOn: downloadFonts, type: Copy) {
@@ -23,9 +24,6 @@ task unzipFonts(dependsOn: downloadFonts, type: Copy) {
 }
 
 buildRpm {
-    requires('fontawesome-fonts')
-    requires('powerline-fonts')
-
     from(buildDir) {
         into '/usr/share/fonts/local'
         include "**/*.otf"
@@ -33,9 +31,6 @@ buildRpm {
 }
 
 buildDeb {
-    requires('fonts-font-awesome')
-    requires('fonts-powerline')
-
     from(buildDir) {
         into '/usr/share/fonts/opentype'
         include "**/*.otf"

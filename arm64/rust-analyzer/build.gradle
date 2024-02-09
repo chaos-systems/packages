@@ -13,9 +13,18 @@ task downloadZipFile(type: Download) {
     overwrite false
 }
 
+import java.util.zip.GZIPInputStream
 task downloadAndUnzipFile(dependsOn: downloadZipFile) {
-    file("${buildDir}/rust-analyzer").withOutputStream { os ->
-        os << resources.gzip("${buildDir}/rust-analyzer.gz").read()
+    doLast {
+        def input = new GZIPInputStream(new FileInputStream("${buildDir}/rust-analyzer.gz"))
+        def output = new FileOutputStream("${buildDir}/rust-analyzer")
+        def buffer = new byte[1024]
+        int length
+        while ((length = input.read(buffer)) > 0) {
+            output.write(buffer, 0, length)
+        }
+        output.close()
+        input.close()
     }
 }
 

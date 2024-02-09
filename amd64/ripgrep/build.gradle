@@ -1,6 +1,6 @@
 task downloadZipFile(type: Download) {
     src([
-            "https://github.com/BurntSushi/ripgrep/releases/download/${ripgrepVersion}/ripgrep_${ripgrepVersion}_amd64.deb"
+            "https://github.com/BurntSushi/ripgrep/releases/download/${ripgrepVersion}/ripgrep_${ripgrepVersion}-1_amd64.deb"
     ])
     dest "$buildDir/distributions/ripgrep_${ripgrepVersion}_amd64.deb"
     overwrite false
